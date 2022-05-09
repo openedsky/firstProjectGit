@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <title>{% block title %}Direction des Examens et Concours DECO (MENA-CI){% endblock %}</title>
+
+    <!-- Fav Icon -->
+    <link rel="icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Arimo:400,400i,700,700i&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link href="{{ asset('assets/css/font-awesome-all.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/flaticon.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/owl.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/jquery.fancybox.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/color.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/rtl.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168543140-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-168543140-2');
+    </script>
+
+
+</head>
+
+
+<!-- page wrapper -->
+<body class="boxed_wrapper ltr">
+
+<!-- Preloader -->
+<div class="loader-wrap">
+    <div class="preloader"><div class="preloader-close">Fermer le préchargeur</div></div>
+    <div class="layer layer-one"><span class="overlay"></span></div>
+    <div class="layer layer-two"><span class="overlay"></span></div>
+    <div class="layer layer-three"><span class="overlay"></span></div>
+</div>
+
+
+<!-- page-direction -->
+<div class="page_direction">
+    <div class="demo-rtl direction_switch"><button class="rtl">RTL</button></div>
+    <div class="demo-ltr direction_switch"><button class="ltr">LTR</button></div>
+</div>
+<!-- page-direction end -->
+
+
+<!-- search-popup -->
+<div id="search-popup" class="search-popup">
+    <div class="close-search"><span>Fermer</span></div>
+    <div class="popup-inner">
+        <div class="overlay-layer"></div>
+        <div class="search-form">
+            <form method="post" action="{{ path('search_swift') }}" name="form">
+                <div class="form-group">
+                    <fieldset>
+                        <input type="search" class="form-control" name="query" value="" placeholder="Vos mots clés ici" required >
+                        <input type="submit" value="Rechercher!" class="theme-btn style-four">
+                    </fieldset>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- search-popup end -->
+
+
+<!-- main header -->
+<header class="main-header style-one style-six">
+    <div class="header-top">
+        <div class="auto-container">
+            <div class="top-inner clearfix">
+                {#<ul class="info top-left pull-left">
+                    <li><a href="index-2.html">About</a></li>
+                    <li><a href="index-2.html">Careers</a></li>
+                    <li><a href="index-2.html">Services</a></li>
+                    <li><a href="index-2.html">Agents</a></li>
+                </ul>#}
+                <div class="info top-left pull-left">
+                    <img src="{{ asset('assets/images/amoirieX16_blanc.png') }}" class="mt-n1" alt="">  Ministère de l'Education Nationale et de l'Alphabétisation - <span class="font-weight-bold">Côte d'Ivoire</span>
+                </div>
+                <div class="top-right pull-right">
+                    <ul class="social-links clearfix">
+                        <li></li>
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+
+                        {% if app.user %}
+                            <li style="font-size: 12px"><a href="{{ path('account_home') }}"> <i class="fa fa-user-shield"></i> {{ app.user.firstname }} {{ app.user.lastname }}</a></li>
+                            <li style="font-size: 12px"><a href="{{ path('app_logout') }}"> <i class="fa fa-power-off"></i> Déconnexion</a></li>
+                        {% else %}
+                            {#<li style="font-size: 12px"><a href="{{ path('register') }}">Inscription</a></li>#}
+                            <li style="font-size: 12px"><a href="{{ path('app_login') }}">Connexion</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-lower">
+        <div class="auto-container">
+            <div class="outer-box clearfix">
+                <div class="logo-box pull-left">
+                    <figure class="logo"><a href="{{ path('home') }}"><img src="{{ asset('assets/images/logo_deco.jpg') }}" width="150" alt=""></a></figure>
+                </div>
+                <div class="menu-area pull-right">
+                    <!--Mobile Navigation Toggler-->
+                    <div class="mobile-nav-toggler">
+                        <i class="icon-bar"></i>
+                        <i class="icon-bar"></i>
+                        <i class="icon-bar"></i>
+                    </div>
+                    <nav class="main-menu navbar-expand-md navbar-light">
+                        <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                            <ul class="navigation clearfix">
+                                <li class=""><a href="{{ path('home') }}">Accueil</a></li>
+                                <li class="dropdown {% if block('active_direction') is defined %} current {% endif %} "><a href="">Direction</a>
+                                    <ul>
+                                        <li><a href="{{ path('direction_word_director') }}">Mot de la Directrice</a></li>
+                                        <li><a href="{{ path('direction_historical') }}">Historique</a></li>
+                                        <li><a href="{{ path('direction_assignment') }}">Mission</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown {% if block('active_news') is defined %} current {% endif %}"><a href="">Actualité</a>
+                                    <ul>
+                                        <li><a href="{{ path('news_releases') }}">Communiqués</a></li>
+                                        <li><a href="{{ path('news_deco') }}">Actu DECO</a></li>
+                                        <li><a href="{{ path('news_calendar') }}">Calendrier des examens et concours</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown {% if block('active_school_exams') is defined %} current {% endif %}"><a href="">Examens scolaires</a>
+                                    <div class="megamenu">
+                                        <div class="row clearfix">
+                                            <div class="col-lg-3 column">
+                                                <ul>
+                                                    <li><a href="{{ path('school_exams_bac') }}"><h4 class="font-weight-bold">BAC Session 2022</h4></a></li>
+                                                    <li><a href="{{ path('school_exams_bac_procedure') }}">Procédure d'inscription</a></li>
+                                                    <li><a href="{{ path('school_exams_bac_co') }}">Section Candidat Officiel</a></li>
+                                                    <li><a href="{{ path('school_exams_bac_cl') }}">Section Candidat Libre</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-lg-3 column">
+                                                <ul>
+                                                    <li><a href="{{ path('school_exams_bepc') }}"><h4 class="font-weight-bold">BEPC Session 2022</h4></a></li>
+                                                    <li><a href="{{ path('school_exams_bepc_procedure') }}">Procédure d'inscription</a></li>
+                                                    <li><a href="{{ path('school_exams_bepc_co') }}">Section Candidat Officiel</a></li>
+                                                    <li><a href="{{ path('school_exams_bepc_cl') }}">Section Candidat Libre</a></li>
+                                                    <li><a href="{{ path('school_exams_to_procedure') }}">Section Test d'orientation en Seconde</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-lg-3 column">
+                                                <ul>
+                                                    <li><a href="{{ path('school_exams_cepe') }}"><h4 class="font-weight-bold">CEPE Session 2022</h4></a></li>
+                                                    <li><a href="{{ path('school_exams_cepe_procedure') }}">Procédure d'inscription</a></li>
+                                                    <li><a href="{{ path('school_exams_cepe_co') }}">Section Candidat Officiel</a></li>
+                                                    <li><a href="{{ path('school_exams_cepe_cl') }}">Section Candidat Libre</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-lg-3 column">
+                                                <ul>
+                                                    <li><h4 class="font-weight-bold">Liens utiles</h4></li>
+                                                    <li><a href="https://agcepe.exam-deco.org/admin/" target="_blank">Accès AGCEPE</a></li>
+                                                    <li><a href="https://agce.exam-deco.org/iadmin/" target="_blank">Accès AGCE</a></li>
+                                                    <li><a href="https://agfne.sigfne.net/admin/" target="_blank">Accès AGFNE</a></li>
+                                                    <li><a href="https://agfne.sigfne.net/vas/interface-edition-documents-sigfne/" target="_blank">SIGFNE DSPS/MEN : Edition de documents</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="dropdown"><a href="">Concours pédagogiques</a>
+                                    <ul>
+                                        <li><a href="">Examens et Concours Pédagogiques</a></li>
+                                        <li><a href="">Accès ePEDAGO</a></li>
+                                    </ul>
+                                </li>
+                                <li class="{% if block('active_edemandes') is defined %} current {% endif %}"><a href="{{ path('edemandes') }}">eDemandes</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <div class="menu-right-content clearfix">
+                        <div class="search-btn mt-2">
+                            <button type="button" class="search-toggler"><i class="flaticon-search-1"></i></button>
+                        </div>
+                        <div class="nav-btn nav-toggler navSidebar-button clearfix">
+                            <i class="fas fa-align-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--sticky Header-->
+    <div class="sticky-header">
+        <div class="auto-container">
+            <div class="outer-box clearfix">
+                <div class="logo-box pull-left">
+                    <figure class="logo"><a href="{{ path('home') }}"><img src="{{ asset('assets/images/logo_deco.jpg') }}" width="100 "  alt=""></a></figure>
+                </div>
+                <div class="menu-area pull-right">
+                    <nav class="main-menu clearfix">
+                        <!--Keep This Empty / Menu will come through Javascript-->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- main-header end -->
+
+<!-- Mobile Menu  -->
+<div class="mobile-menu">
+    <div class="menu-backdrop"></div>
+    <div class="close-btn"><i class="fas fa-times"></i></div>
+
+    <nav class="menu-box">
+        <div class="nav-logo"><a href="{{ path('home') }}"><img src="{{ asset('assets/images/logo_deco.jpg') }}" width="75" alt="" title=""></a></div>
+        <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
+        <div class="contact-info">
+            <h4>Contact</h4>
+            <ul>
+                <li>BP V 276 Abidjan <br>RCI, Abidjan Plateau en face de la Cité Administrative sur le prolongement du Ministère de la Défense</li>
+                <li><a href="mailto:courriel@men-deco.org">courriel@men-deco.org</a></li>
+                <li><a href="tel:+2252720328217">+225 27 20 32 82 17</a></li>
+                <li><a href="tel:+2252720328742">+225 27 20 32 87 42</a></li>
+                <li><a href="tel:+2252720320074">+225 27 20 32 00 74</a></li>
+            </ul>
+        </div>
+        <div class="social-links">
+            <ul class="clearfix">
+                <li><a href="{{ path('home') }}"><span class="fab fa-twitter"></span></a></li>
+                <li><a href="{{ path('home') }}"><span class="fab fa-facebook-square"></span></a></li>
+                <li><a href="{{ path('home') }}"><span class="fab fa-linkedin-in"></span></a></li>
+            </ul>
+        </div>
+    </nav>
+</div><!-- End Mobile Menu -->
+
+{% block pageTitle %}
+<!--Page Title-->
+<section class="page-title style-three centred" style="background-image: url(assets/images/background/page-title-5.jpg);">
+    <div class="auto-container">
+        <div class="content-box clearfix">
+            <h1>Latest News</h1>
+            <ul class="bread-crumb clearfix">
+                <li><a href="index.html">Home</a></li>
+                <li>Blog Details</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!--End Page Title-->
+{% endblock %}
+
+<section class="sidebar-page-container">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <div class="col-lg-9 col-md-12 col-sm-12 content-side">
+                <div class="blog-classic-content">
+                    <div class="news-block-three">
+                        {% block content %}
+
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-12 col-sm-12 sidebar-side">
+                <div class="sidebar">
+                    <div class="sidebar-widget sidebar-search">
+                        {#<form action="" method="post" class="search-form">
+                            <div class="form-group">
+                                <input type="search" name="search-field" placeholder="Rechercher" required="">
+                                <button type="submit"><i class="fas fa-search"></i></button>
+                            </div>
+                        </form>#}
+
+                        {{ render(controller('App\\Controller\\SearchController::searchbar')) }}
+                    </div>
+
+                    <div class="sidebar-widget sidebar-post">
+                        <div class="widget-title">
+                            <h3>Actu DECO</h3>
+                        </div>
+                        <div class="widget-content">
+                            {% for post in posts_last %}
+
+                                <div class="post">
+                                    <figure class="post-thumb"><a href="{{ path('news_deco_item', {'slug': post.slug}) }}"><img src="/assets/uploads/posts/{{ post.imagePost }}" alt="{{ post.title }}"></a></figure>
+                                    <h6><a href="{{ path('news_deco_item', {'slug': post.slug}) }}">{{ post.title }}</a></h6>
+                                    <div class="post-date"><i class="far fa-calendar-alt"></i>{{ post.datePublished|format_datetime('medium', 'short') }}</div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="sidebar-widget sidebar-categories">
+                        <div class="widget-title">
+                            <h3>Liens utiles</h3>
+                        </div>
+                        <div class="widget-content">
+                            <ul class="categories-list clearfix">
+                                <li><a href="https://agce.exam-deco.org/iadmin/" target="_blank">AGCE</a></li>
+                                <li><a href="https://agcepe.exam-deco.org/admin/" target="_blank">AGCEPE</a></li>
+                                <li><a href="">ePEDAGO</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    {#<div class="sidebar-widget sidebar-categories">
+                        <div class="widget-title">
+                            <h3>Stats du Site</h3>
+                        </div>
+                        <div class="widget-content">
+                            <ul class="categories-list clearfix">
+                                <li><a href="">Personnes connectées <span>(XXXXX)</span></a></li>
+                                <li><a href="">Nombre de visites<span>(XXXXXXX)</span></a></li>
+                            </ul>
+                        </div>
+                    </div>#}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- main-footer -->
+<footer class="main-footer alternet-5">
+    <div class="footer-upper">
+        <div class="auto-container">
+            <div class="upper-inner clearfix">
+                <div class="text pull-left">
+                    <h2>Ecrire à la DECO</h2>
+                    <p>Vous avez une préoccupation ? Vous pouvez nous laisser un message.</p>
+                </div>
+                <div class="btn-box pull-right">
+                    <a href="{{ path('contact') }}" class="theme-btn style-one">Formulaire contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-top">
+        <div class="auto-container">
+            <div class="widget-section">
+                <div class="row clearfix">
+                    <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                        <div class="footer-widget logo-widget">
+                            <figure class="footer-logo"><a href="{{ path('home') }}"><img src="{{ asset('assets/images/logo_deco.jpg') }}" width="150" alt=""></a></figure>
+                            <div class="text">
+                                <p>Ministère de l'Education Nationale et de l'Alphabétisation - Côte d'Ivoire</p>
+                            </div>
+                            <ul class="info-list clearfix">
+                                <li><i class="fas fa-map-marker-alt"></i>BP V 276 Abidjan
+                                    RCI, Abidjan Plateau en face de la Cité Administrative sur le prolongement du Ministère de la Défense</li>
+                                <li><i class="fas fa-envelope"></i>Email <a href="mailto:courriel@men-deco.org">courriel@men-deco.org</a></li>
+                                <li><i class="fas fa-headphones"></i>Support <a href="tel:+2252720328217">+225 27 20 32 82 17</a></li>
+                            </ul>
+                            <ul class="social-links clearfix">
+                                <li><a href="{{ path('home') }}"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="{{ path('home') }}"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="{{ path('home') }}"><i class="fab fa-linkedin-in"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                        <div class="footer-widget links-widget ml-70">
+                            <div class="widget-title">
+                                <h4>Direction</h4>
+                            </div>
+                            <div class="widget-content">
+                                <ul class="list clearfix">
+                                    <li><a href="{{ path('direction_word_director') }}">Mot de la Directrice</a></li>
+                                    <li><a href="{{ path('direction_historical') }}">Historique</a></li>
+                                    <li><a href="{{ path('direction_assignment') }}">Mission</a></li>
+                                    <li><a href="{{ path('news_releases') }}">Communiqués</a></li>
+                                    <li><a href="{{ path('news_deco') }}">Actu DECO</a></li>
+                                    <li><a href="{{ path('news_calendar') }}">Calendrier</a></li>
+                                    <li><a href="{{ path('contact') }}">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                        <div class="footer-widget links-widget">
+                            <div class="widget-title">
+                                <h4>Examens Scolaires</h4>
+                            </div>
+                            <div class="widget-content">
+                                <ul class="list clearfix">
+                                    <li><a href="{{ path('school_exams_bac') }}">BAC</a></li>
+                                    <li><a href="{{ path('school_exams_bepc') }}">BEPC</a></li>
+                                    <li><a href="{{ path('school_exams_to_procedure') }}">Test d'Orientation en Seconde</a></li>
+                                    <li><a href="{{ path('school_exams_cepe') }}">CEPE</a></li>
+                                    <li><a href="https://agce.exam-deco.org/iadmin/" target="_blank">AGCE</a></li>
+                                    <li><a href="https://agcepe.exam-deco.org/admin/" target="_blank">AGCEPE</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                        <div class="footer-widget links-widget">
+                            <div class="widget-title">
+                                <h4>Examens et Concours Pédagogiques</h4>
+                            </div>
+                            <div class="widget-content">
+                                <ul class="list clearfix">
+                                    <li><a href="">Examens et Concours Pédagogiques</a></li>
+                                    <li><a href="">Accès ePEDAGO</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="auto-container">
+            <div class="copyright">
+                <p>&copy; {{ 'now' | date('Y') }} <a href="mailto:anselmeseri@yahoo.fr">OpenedSky</a> - Direction des Examens et Concours. All rights reserved.</p>
+                <br>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- main-footer end -->
+
+
+
+<!--Scroll to top-->
+<button class="scroll-top scroll-to-target" data-target="html">
+    <span class="fa fa-arrow-up"></span>
+</button>
+
+
+<!-- sidebar cart item -->
+<div class="xs-sidebar-group info-group info-sidebar">
+    <div class="xs-overlay xs-bg-black"></div>
+    <div class="xs-sidebar-widget">
+        <div class="sidebar-widget-container">
+            <div class="widget-heading">
+                <a href="#" class="close-side-widget">X</a>
+            </div>
+            <div class="sidebar-textwidget">
+                <div class="sidebar-info-contents">
+                    <div class="content-inner">
+                        <div class="upper-box">
+                            <div class="logo">
+                                <a href="{{ path('home') }}"><img src="{{ asset('assets/images/logo_deco.jpg') }}" alt="" /></a>
+                            </div>
+                            <div class="text">
+                                <p>Ministère de l'Education Nationale et de
+                                    l'Alphabétisation - Côte d'Ivoire</p>
+                            </div>
+                        </div>
+                        <div class="side-menu-box">
+                            <div class="side-menu">
+                                <nav class="menu-box">
+                                    <div class="menu-outer">
+
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="info-box">
+                            <h3>Plus d'infos</h3>
+                            <ul class="info-list clearfix">
+                                <li><i class="fas fa-map-marker-alt"></i>BP V 276 Abidjan <br>RCI, Abidjan Plateau en face de la Cité Administrative sur le prolongement du Ministère de la Défense</li>
+                                <li><i class="fas fa-envelope"></i><a href="mailto:courriel@men-deco.org">courriel@men-deco.org</a></li>
+                                <li><i class="fas fa-headphones-alt"></i><a href="tel:+2252720328217">+225 27 20 32 82 17</a></li>
+                                <li><i class="fas fa-headphones-alt"></i><a href="tel:+2252720328742">+225 27 20 32 87 42</a></li>
+                                <li><i class="fas fa-headphones-alt"></i><a href="tel:+2252720320074">+225 27 20 32 00 74</a></li>
+                            {#<form action="contact.html" method="post" class="subscribe-form">
+                                <div class="form-group">
+                                    <input type="email" name="email" placeholder="Email address" required="">
+                                    <button type="submit" class="theme-btn style-one">subscribe now</button>
+                                </div>
+                            </form>#}
+                            <ul class="social-links clearfix">
+                                <li><a href="{{ path('home') }}"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="{{ path('home') }}"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="{{ path('home') }}"><i class="fab fa-linkedin-in"></i></a></li>
+                                {#<li><a href="{{ path('home') }}"><i class="fab fa-google-plus-g"></i></a></li>
+                                <li><a href="{{ path('home') }}"><i class="fab fa-pinterest-p"></i></a></li>
+                                <li><a href="{{ path('home') }}"><i class="fab fa-instagram"></i></a></li>#}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END sidebar widget item -->
+
+<!-- Flash_Bottom -->
+<div class="" id="tiv">
+    <div id="flash_info" style="width:100%; padding:0px; margin:0px">
+        <table border="0" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr>
+                <td class="cad_inf">FLASH<span style="color: floralwhite">INFO</span></td>
+                <td>
+                    <marquee direction="left" width="100%" scrollamount="3.5" onmouseover="this.stop()" onmouseout="this.start()" style="font-size:15px; padding:3px;">
+
+
+
+                        {% for flashinfo in flashinfos %}
+                            <span style="background-color:#C00; color:#FFF; font-weight:bold; padding:4px 4px 5px 4px">INFO</span>
+                            <span style="color:#FFF; font-weight:normal; ">
+							<a href="{{ flashinfo.link }}" style="color: white; text-transform: none">{{ flashinfo.title }}</a>
+                        </span>
+                        {% endfor %}
+                    </marquee>
+
+                </td>
+
+                <!--  <td><a href="#" title="précédent" class="btn_nav_flash">
+                      <img src="" alt="prec">
+                    </a></td>
+
+                  <td><a href="#" title="suivant" class="btn_nav_flash">
+                      <img src="" alt="suiv">
+                    </a></td>-->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- END Flash_Bottom -->
+
+
+
+<!-- jequery plugins -->
+<script src="{{ asset('assets/js/jquery.js') }}"></script>
+<script src="{{ asset('assets/js/popper.min.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/js/owl.js') }}"></script>
+<script src="{{ asset('assets/js/wow.js') }}"></script>
+<script src="{{ asset('assets/js/validation.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.fancybox.js') }}"></script>
+<script src="{{ asset('assets/js/appear.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.countTo.js') }}"></script>
+<script src="{{ asset('assets/js/scrollbar.js') }}"></script>
+<script src="{{ asset('assets/js/nav-tool.js') }}"></script>
+<script src="{{ asset('assets/js/TweenMax.min.js') }}"></script>
+<script src="{{ asset('assets/js/circle-progress.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.nice-select.min.js') }}"></script>
+
+<!-- main-js -->
+<script src="{{ asset('assets/js/script.js') }}"></script>
+
+</body><!-- End of .page_wrapper -->
+</html>

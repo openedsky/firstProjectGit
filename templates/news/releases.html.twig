@@ -1,0 +1,51 @@
+{% extends 'base_standard_sidebar.html.twig' %}
+
+{% block title %}Communiqués - Direction des Examens et Concours DECO (MENA-CI){% endblock %}
+
+{% block active_news %} {% endblock %}
+
+
+{% block pageTitle %}
+    <!--Page Title-->
+    <section class="page-title centred" style="background-image: url({{ asset('assets/images/background/page2.jpg') }});">
+        <div class="auto-container">
+            <div class="content-box clearfix">
+                <h1>Communiqués</h1>
+                <ul class="bread-crumb clearfix">
+                    <li><a href="{{ path('home') }}">Accueil</a></li>
+                    <li>Actualité</li>
+                    <li>Communiqués</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--End Page Title-->
+{% endblock %}
+
+
+{% block content %}
+
+    <table class="table table-bordered table-hover table-header">
+        <tr class="table-header bg-black" style="background-color: gainsboro">
+            <td><h3><i class="fas fa-file-pdf-o"></i> Communiqués</h3></td>
+            <td>Date de publication</td>
+        </tr>
+        {% for release in releases %}
+            <tr>
+                <td>
+                    <a href="/assets/uploads/releases/{{ release.file }}"><span class="text-black-50 font-weight-bold">{{ release.title }}</span></a>
+                </td>
+                <td>
+                    <a href="/assets/uploads/releases/{{ release.file }}"><small>Ajouté le {{ release.datePublished|date("m/d/Y", "Europe/Paris") }}</small></a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <div class="pagination-wrapper centred">
+        <ul class="pagination clearfix">
+            {{ knp_pagination_render(releases) }}
+        </ul>
+    </div>
+
+{% endblock %}

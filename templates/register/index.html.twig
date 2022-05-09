@@ -1,0 +1,67 @@
+{% extends 'base_standard.html.twig' %}
+
+{% block title %}Ajouter un compte - Direction des Examens et Concours DECO (MENA-CI){% endblock %}
+
+
+
+
+{% block content %}
+    <!--Page Title-->
+    <section class="page-title centred" style="background-image: url({{ asset('assets/images/background/page-title.jpg') }});">
+        <div class="auto-container">
+            <div class="content-box clearfix">
+                <h1>Ajouter un compte</h1>
+                <ul class="bread-crumb clearfix">
+                    <li><a href="{{ path('home') }}">Accueil</a></li>
+                    <li>Ajouter un compte</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--End Page Title-->
+
+    <!-- about-style-two -->
+    <section class="about-style-two about-page-1">
+        <div class="auto-container">
+            <div class="row clearfix">
+                <div class="col-lg-7 col-md-12 col-sm-12 content-column">
+                    <div id="content_block_three">
+                        <div class="content-box">
+                            <div class="sec-title right">
+                                <h5>Utilisateurs DECO</h5>
+                                <h2>Ajouter un compte</h2>
+                            </div>
+                            <div class="text">
+                                {% if notification %}
+                                    <div class="alert alert-info">
+                                        {{ notification }}
+                                    </div>
+                                    <hr>
+                                {% endif %}
+
+                                {{ form(form) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-12 col-sm-12 image-column">
+                    <div id="image_block_two">
+                        <div class="image-box">
+                            <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-25.png);"></div>
+                            <figure class="image"><img src="{{ asset('assets/images/resource/directrice_dosso_nimaga_mariam.jpg') }}" alt=""></figure>
+                            <div class="content-box">
+                                <i class="fas fa-microphone"></i>
+                                <h4>Mme Mariam Nimaga DOSSO</h4>
+                                <h5>Directrice de la DECO</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- about-style-two end -->
+
+
+
+{% endblock %}

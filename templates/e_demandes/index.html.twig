@@ -1,0 +1,31 @@
+{% extends 'base_standard_sidebar.html.twig' %}
+
+{% block title %}Demandes en ligne - Direction des Examens et Concours DECO (MENA-CI){% endblock %}
+
+{% block active_edemandes %} {% endblock %}
+
+{#{% set current_menu = app.request.get('_route') %}
+{{ current_menu }}
+#}
+{% block pageTitle %}
+    <!--Page Title-->
+    <section class="page-title centred" style="background-image: url({{ asset('assets/images/background/page2.jpg') }});">
+        <div class="auto-container">
+            <div class="content-box clearfix">
+                <h1>Demandes en ligne</h1>
+                <ul class="bread-crumb clearfix">
+                    <li><a href="{{ path('home') }}">Accueil</a></li>
+                    <li>Demandes en ligne</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--End Page Title-->
+{% endblock %}
+
+
+{% block content %}
+
+
+
+{% endblock %}

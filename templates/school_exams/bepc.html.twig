@@ -1,0 +1,44 @@
+{% extends 'base_standard_sidebar.html.twig' %}
+
+{% block title %}BEPC - Direction des Examens et Concours DECO (MENA-CI){% endblock %}
+
+{% block active_school_exams %} {% endblock %}
+{% block pageTitle %}
+    <!--Page Title-->
+    <section class="page-title centred" style="background-image: url({{ asset('assets/images/background/page2.jpg') }});">
+        <div class="auto-container">
+            <div class="content-box clearfix">
+                <h1>BEPC</h1>
+                <ul class="bread-crumb clearfix">
+                    <li><a href="{{ path('home') }}">Accueil</a></li>
+                    <li>Examens Scolaires</li>
+                    <li>BEPC</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--End Page Title-->
+{% endblock %}
+
+
+{% block content %}
+
+    <table class="table table-bordered table-hover table-header">
+        <tr class="table-header bg-black" style="background-color: gainsboro">
+            <td><h3><i class="fas fa-file-pdf-o"></i> BEPC Session 2022</h3></td>
+        </tr>
+        <tr>
+            <td><a href="{{ path('school_exams_bepc_procedure') }}" class="text-dark"><b>Procédure d'inscription au BEPC</b></a></td>
+        </tr>
+        <tr>
+            <td><a href="{{ path('school_exams_bepc_co') }}" class="text-dark"><b>Section Candidat Officiel</b></a></td>
+        </tr>
+        <tr>
+            <td><a href="{{ path('school_exams_bepc_cl') }}" class="text-dark"><b>Section Candidat Libre</b></a></td>
+        </tr>
+        <tr>
+            <td><a href="{{ path('school_exams_to_procedure') }}" class="text-dark"><b>Section Test d'Orientation en Seconde</b></a></td>
+        </tr>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'base_standard_sidebar.html.twig' %}
+
+{% block title %}{{ post.title }} - Direction des Examens et Concours DECO (MENA-CI){% endblock %}
+
+{% block active_news %} {% endblock %}
+
+{% block pageTitle %}
+    <!--Page Title-->
+    <section class="page-title centred" style="background-image: url({{ asset('assets/images/background/page2.jpg') }});">
+        <div class="auto-container">
+            <div class="content-box clearfix">
+                <h2 class="text-white">{{ post.title }}</h2>
+                <ul class="bread-crumb clearfix">
+                    <li><a href="{{ path('home') }}">Accueil</a></li>
+                    <li>Actualité</li>
+                    <li>Actu DECO</li>
+                    {#<li>{{ post.title }}</li>#}
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--End Page Title-->
+{% endblock %}
+
+
+{% block content %}
+    <div class="blog-details-content">
+        <figure class="image-box">
+            <img src="/assets/uploads/posts/{{ post.imagePost }}" alt="{{ post.title }}">
+            <span class="category">Actu DECO</span>
+        </figure>
+        <div class="inner-box">
+            <ul class="post-info clearfix">
+                <li><i class="far fa-user"></i><a href="#">Admin</a></li>
+                <li><i class="far fa-calendar-alt"></i>{{ post.datePublished|format_datetime('medium', 'short') }}</li>
+            </ul>
+            <div class="text">
+                <h2>{{ post.title }}</h2>
+                {{ post.content|raw }}
+            </div>
+
+        </div>
+        <div class="post-share-option clearfix">
+
+            <ul class="post-share pull-right clearfix">
+                <li class="share">
+                    <a href="{{ path('news_deco_item', {'slug': post.slug}) }}"><i class="fas fa-share-alt"></i></a>
+                    <ul class="social-links">
+                        <li><a href="{{ path('home') }}"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="{{ path('home') }}"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="{{ path('home') }}"><i class="fab fa-vimeo-v"></i></a></li>
+                        <li><a href="{{ path('home') }}"><i class="fab fa-linkedin-in"></i></a></li>
+                    </ul>
+                </li>
+                <li>Partager cet article</li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

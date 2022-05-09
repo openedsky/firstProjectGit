@@ -1,0 +1,125 @@
+{% extends 'base_standard.html.twig' %}
+
+{% block title %}Contact - Direction des Examens et Concours DECO (MENA-CI){% endblock %}
+
+{% block active_contact %} {% endblock %}
+
+{#{% set current_menu = app.request.get('_route') %}
+{{ current_menu }}
+#}
+
+{% block content %}
+    <!--Page Title-->
+    <section class="page-title centred">
+        <div class="auto-container">
+            <div class="content-box clearfix">
+                <h1>Contact</h1>
+                <ul class="bread-crumb clearfix">
+                    <li><a href="{{ path('home') }}">Accueil</a></li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--End Page Title-->
+
+
+
+
+    <!-- contact-information -->
+    <section class="contact-information centred mb-120">
+        <div class="auto-container">
+            <div class="sec-title right">
+                <h5>Contacts</h5>
+                <h2 class="text-success">Direction des Examens et Concours (DECO)</h2>
+                <h4><br>Ministère de l'Education Nationale et de l'Alphabétisation - Côte d'Ivoire</h4>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-4 col-md-6 col-sm-12 single-column">
+                    <div class="single-item wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
+                        <div class="inner-box">
+                            <div class="icon-box"><i class="far fa-map"></i></div>
+                            <h3>Adresse</h3>
+                            <p>BP V 276 Abidjan<br />Abidjan Plateau En face de la Cité Administrative, Côte d'Ivoire</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 single-column">
+                    <div class="single-item wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
+                        <div class="inner-box">
+                            <div class="icon-box"><i class="fas fa-phone"></i></div>
+                            <h3>Contact</h3>
+                            <p><a href="tel:+2252720328217">+225 27 20 32 82 17</a></p>
+                            <p><a href="tel:+2252720328742">+225 27 20 32 87 42</a></p>
+                            <p><a href="tel:+2252720320074">+225 27 20 32 00 74</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 single-column">
+                    <div class="single-item wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1500ms">
+                        <div class="inner-box">
+                            <div class="icon-box"><i class="far fa-envelope-open"></i></div>
+                            <h3>Email</h3>
+                            <p><a href="mailto:courriel@men-deco.org">courriel@men-deco.org</a></p>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- contact-information end -->
+
+    <!-- contact-style-two -->
+    <section class="contact-style-two" style="background-image: url('{{ asset('assets/images/background/bg_contact.jpg') }}');">
+        <div class="auto-container">
+            <div class="col-xl-8 col-lg-12 col-md-12 inner-column">
+                <div class="sec-title left light">
+                    <h5>Formulaire contact</h5>
+                    <h2>Nous écrire</h2>
+                    <p>Vous avez une préoccupation ? Vous pouvez nous laisser un message.</p>
+                </div>
+                <div class="alert alert-warning">
+                    {{ notification }}
+                </div>
+                <form method="post" id="contact-form" class="default-form">
+                    <div class="row clearfix">
+                        <div class="col-lg-6 col-md-6 col-sm-12 form-group">
+                            <input type="text" name="from_name" placeholder="Nom et prénom" required="">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 form-group">
+                            <input type="email" name="from_email" placeholder="Email " required="">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 form-group">
+                            <input type="text" name="from_phone" placeholder="Téléphone" required="">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 form-group">
+                            <input type="text" name="subject" placeholder="Objet du message" required="">
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                            <textarea name="content" placeholder="Message"></textarea>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 form-group message-btn">
+                            <button class="theme-btn style-one" type="submit" name="submit-form">Envoyer votre message</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- contact-style-two end -->
+
+
+    <!-- google-map-section -->
+    <section class="google-map-section mb-lg-n2">
+        <div class="map-column">
+            <div class="google-map-area">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.6074847751147!2d-4.023448285475723!3d5.323757796138048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfc1ebb1293e1b83%3A0xdb3489fd637afb79!2sDirection+des+Examens+et+Concours!5e0!3m2!1sfr!2sci!4v1553530404049" width="1920" height="800" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+    <!-- google-map-section end -->
+
+
+{% endblock %}

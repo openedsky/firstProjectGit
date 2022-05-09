@@ -1,0 +1,105 @@
+{% extends 'base_standard_sidebar.html.twig' %}
+
+{% block title %}Actu DECO - Direction des Examens et Concours DECO (MENA-CI){% endblock %}
+
+{% block active_news %} {% endblock %}
+
+{#{% set current_menu = app.request.get('_route') %}
+{{ current_menu }}
+#}
+{% block pageTitle %}
+    <!--Page Title-->
+    <section class="page-title centred" style="background-image: url({{ asset('assets/images/background/page2.jpg') }});">
+        <div class="auto-container">
+            <div class="content-box clearfix">
+                <h1>Actu DECO</h1>
+                <ul class="bread-crumb clearfix">
+                    <li><a href="{{ path('home') }}">Accueil</a></li>
+                    <li>Actualité</li>
+                    <li>Actu DECO</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--End Page Title-->
+{% endblock %}
+
+
+{% block content %}
+    {#<div class="count">
+        {{ pagination.getTotalItemCount }}
+    </div>#}
+    {#<table class="table table-bordered">
+        <tr>
+            #}{# sorting of properties based on query components #}{#
+            <th>{{ knp_pagination_sortable(pagination, 'Id', 'p.id') }}</th>
+            <th{% if pagination.isSorted('p.Title') %} class="sorted"{% endif %}>
+                {{ knp_pagination_sortable(pagination, 'Titre', 'p.title') }}
+            </th>
+            <th{% if pagination.isSorted(['p.datePublished']) %} class="sorted"{% endif %}>
+                {{ knp_pagination_sortable(pagination, 'Date de publication', ['p.datePublished']) }}
+            </th>
+        </tr>
+
+        #}{# table body #}{#
+        {% for post in pagination %}
+            <tr {% if loop.index is odd %}class="color"{% endif %}>
+                <td>{{ post.id }}</td>
+                <td>{{ post.title }}</td>
+                <td>{{ post.datePublished |format_datetime('medium', 'short') }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    #}{# display navigation #}{#
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+
+    <div class="pagination-wrapper centred">
+        <ul class="pagination clearfix">
+            {{ knp_pagination_render(pagination) }}
+        </ul>
+    </div>#}
+
+
+
+
+    {% for post in posts %}
+
+        {% set nwords = post.content|length + post.title|length %}
+        {% set resume = post.content|slice(0, 350) %}
+        <div class="inner-box">
+            <div class="image-box">
+                <figure class="image"><a href="{{ path('news_deco_item', {'slug': post.slug}) }}"><img src="/assets/uploads/posts/{{ post.imagePost }}" alt="{{ post.title }}"></a></figure>
+                <span class="category">actu DECO</span>
+            </div>
+            <div class="lower-content">
+                <ul class="post-info clearfix">
+                    <li><i class="far fa-user"></i><a href="{{ path('news_deco_item', {'slug': post.slug}) }}">DECO</a></li>
+                    <li><i class="far fa-calendar-alt"></i>{{ post.datePublished|format_datetime('medium', 'short') }}</li>
+                </ul>
+                <h2><a href="{{ path('news_deco_item', {'slug': post.slug}) }}">{{ post.title }}</a></h2>
+                <p>{{ (nwords > 350 ? resume|striptags|slice(0,350) ~ '…' : post.content|raw)  }}</p>
+                <div class="link"><a href="{{ path('news_deco_item', {'slug': post.slug}) }}"><i class="fas fa-arrow-right"></i><span>Lire la suite</span></a></div>
+            </div>
+        </div>
+
+    {% endfor %}
+
+    <div class="pagination-wrapper centred">
+        <ul class="pagination clearfix">
+                {{ knp_pagination_render(posts) }}
+        </ul>
+    </div>
+
+
+    {#<div class="pagination-wrapper centred">
+        <ul class="pagination clearfix">
+            <li><a href="" class="active">1</a></li>
+            <li><a href="">2</a></li>
+            <li><a href="">3</a></li>
+            <li><a href=""><i class="fas fa-arrow-right"></i></a></li>
+        </ul>
+    </div>#}
+
+{% endblock %}

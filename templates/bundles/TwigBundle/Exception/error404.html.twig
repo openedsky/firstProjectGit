@@ -1,0 +1,40 @@
+{% extends 'base_standard.html.twig' %}
+
+{% block title %}Erreur 404 - Direction des Examens et Concours DECO (MENA-CI){% endblock %}
+
+{% block active_contact %} {% endblock %}
+
+{#{% set current_menu = app.request.get('_route') %}
+{{ current_menu }}
+#}
+
+{% block content %}
+    <!--Page Title-->
+    <section class="page-title centred">
+        <div class="auto-container">
+            <div class="content-box clearfix">
+                <h1>404</h1>
+                <ul class="bread-crumb clearfix">
+                    <li><a href="{{ path('home') }}">Accueil</a></li>
+                    <li>404</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--End Page Title-->
+
+
+    <!-- error-section -->
+    <section class="error-section centred">
+        <div class="container">
+            <div class="content-box">
+                <h1>404</h1>
+                <h2>Oups, la ressource sollicitée est introuvable !</h2>
+                <div class="text">Retour à la page d'accueil du site de la DECO.<br /> Cliquez ici <a href="{{ path('home') }}">page d'accueil</a></div>
+            </div>
+        </div>
+    </section>
+    <!-- error-section end -->
+
+
+{% endblock %}

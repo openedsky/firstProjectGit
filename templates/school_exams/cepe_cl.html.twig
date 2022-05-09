@@ -1,0 +1,52 @@
+{% extends 'base_standard_sidebar.html.twig' %}
+
+{% block title %}Section Candidat Libre CEPE - Direction des Examens et Concours DECO (MENA-CI){% endblock %}
+
+{% block active_school_exams %} {% endblock %}
+
+{% block pageTitle %}
+    <!--Page Title-->
+    <section class="page-title centred" style="background-image: url({{ asset('assets/images/background/page2.jpg') }});">
+        <div class="auto-container">
+            <div class="content-box clearfix">
+                <h1>Section Candidat Libre CEPE</h1>
+                <ul class="bread-crumb clearfix">
+                    <li><a href="{{ path('home') }}">Accueil</a></li>
+                    <li>Examens Scolaires</li>
+                    <li><a href="{{ path('school_exams_cepe') }}">CEPE</a></li>
+                    <li>Section Candidat Libre CEPE</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--End Page Title-->
+{% endblock %}
+
+{% block content %}
+
+    <table class="table table-bordered table-hover table-header">
+        <tr class="table-header bg-black" style="background-color: gainsboro">
+            <td><h3><i class="fas fa-user"></i> Section Candidat Libre CEPE</h3></td>
+        </tr>
+        <tr>
+            <td><a href="{{ path('school_exams_cepe_procedure') }}" class="text-dark"><b>Procédure d'inscription au CEPE</b></a></td>
+        </tr>
+        <td><a href="{{ path('school_exams_cepe_cl_register') }}" class="text-dark"><b>Inscription en ligne</b></a>
+        </td>
+        <tr>
+            <td><a href="{{ path('school_exams_cepe_cl_edition_cand') }}" class="text-dark"><b>Edition de documents candidats</b> ::
+                    <i class="fa fa-circle text-warning"></i> Fiche de paiement
+                    <i class="fa fa-circle text-warning"></i> Fiche d'inscription
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td><a href="{{ path('school_exams_cepe_cl_edition_admin') }}" class="text-dark"><b>Edition de listings</b> ::
+                    <i class="fa fa-circle text-warning"></i> Documents annexe 3
+                    <i class="fa fa-circle text-warning"></i> Listing de controle des pré et post repartition
+                </a>
+            </td>
+        </tr>
+    </table>
+
+{% endblock %}

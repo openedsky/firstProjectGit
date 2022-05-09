@@ -1,0 +1,63 @@
+{% extends 'base_standard.html.twig' %}
+
+{% block title %}Zone reservée - Direction des Examens et Concours DECO (MENA-CI){% endblock %}
+
+
+{% block content %}
+    <!--Page Title-->
+    <section class="page-title centred">
+        <div class="auto-container">
+            <div class="content-box clearfix">
+                <h1>Espace Reservé</h1>
+                <ul class="bread-crumb clearfix">
+                    <li><a href="{{ path('home') }}">Accueil</a></li>
+                    <li>Zone DECO</li>
+                    <li>Espace Reservé</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--End Page Title-->
+
+    <!-- about-style-two -->
+    <section class="service-details mt-n5" >
+        <div class="auto-container">
+            <div class="row clearfix">
+                <div class="col-lg-8 col-md-12 col-sm-12 content-side">
+                    <div class="service-details-content">
+                        <div class="content-style-one">
+                            <figure class="image-box"><img src="assets/images/service/service-11.jpg" alt=""></figure>
+                            <div class="sec-title left">
+                                <h5>Zone DECO</h5>
+                                <h2>Espace Reservé</h2>
+                            </div>
+                            <div class="text">
+                                <p>
+                                    Bienvenue <strong>{{ app.user.firstname }} {{ app.user.lastname }}</strong> dans votre espace reservé DECO. <br>
+                                    C'est dans cet espace que vous allez pouvoir gérer les ressources du site. <br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12 sidebar-side">
+                    <div class="service-sidebar">
+                        <div class="sidebar-categories">
+                            <ul class="categories-list clearfix">
+                                <li><a href="{{ path('account_home') }}" class="active">Zone DECO</a></li>
+                                <li><a href="{{ path('account_change_password') }}">Changer Mot de passe</a></li>
+                                <li><a href="{{ path('admin') }}" target="_blank">Gestion du site</a></li>
+                                <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- about-style-two end -->
+
+
+
+{% endblock %}
+

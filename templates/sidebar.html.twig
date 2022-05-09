@@ -1,0 +1,95 @@
+<section class="sidebar-page-container">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <div class="col-lg-9 col-md-12 col-sm-12 content-side">
+                <div class="blog-classic-content">
+                    <div class="news-block-three">
+                        {% if app.request.method == 'POST' %}
+                            <div>
+                                {% if articles | length == 0 %}
+                                    <h4>Aucun résultat pour votre recherche.</h4>
+                                {% else %}
+                                    <h2>Résultats de votre recherche</h2>
+                                    {% for article in articles %}
+                                        {% set nwords = article.content|length + article.title|length %}
+                                        {% set resume = article.content|slice(0, 150) %}
+
+                                        <div class="inner-box">
+                                            <div class="image-box">
+                                                <figure class="image"></figure>
+                                                <span class="category">actu DECO</span>
+                                            </div>
+                                            <div class="lower-content">
+                                                <ul class="post-info clearfix">
+                                                    <li><i class="far fa-calendar-alt"></i>{{ article.datePublished|format_datetime('medium', 'short') }}</li>
+                                                </ul>
+                                                <h2><a href="{{ path('news_deco_item', {'slug': article.slug}) }}">{{ article.title }}</a></h2>
+                                                <p><a href="{{ path('news_deco_item', {'slug': article.slug}) }}"><img src="/assets/uploads/posts/{{ article.imagePost }}" alt="{{ article.title }}" width="100"></a> {{ (nwords > 150 ? resume|striptags|slice(0,150) ~ '…' : article.content|raw)  }}</p>
+                                                <div class="link"><a href="{{ path('news_deco_item', {'slug': article.slug}) }}"><i class="fas fa-arrow-right"></i><span>Lire la suite</span></a></div>
+                                            </div>
+                                        </div>
+
+
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-12 col-sm-12 sidebar-side">
+                <div class="sidebar">
+                    <div class="sidebar-widget sidebar-search">
+                        {#<form action="" method="post" class="search-form">
+                            <div class="form-group">
+                                <input type="search" name="search-field" placeholder="Rechercher" required="">
+                                <button type="submit"><i class="fas fa-search"></i></button>
+                            </div>
+                        </form>#}
+
+                        {{ render(controller('App\\Controller\\SearchController::searchbar')) }}
+                    </div>
+
+                    <div class="sidebar-widget sidebar-post">
+                        <div class="widget-title">
+                            <h3>Actu DECO</h3>
+                        </div>
+                        <div class="widget-content">
+                            {% for post in posts_last %}
+
+                                <div class="post">
+                                    <figure class="post-thumb"><a href="{{ path('news_deco_item', {'slug': post.slug}) }}"><img src="/assets/uploads/posts/{{ post.imagePost }}" alt="{{ post.title }}"></a></figure>
+                                    <h6><a href="{{ path('news_deco_item', {'slug': post.slug}) }}">{{ post.title }}</a></h6>
+                                    <div class="post-date"><i class="far fa-calendar-alt"></i>{{ post.datePublished|date("m/d/Y", "Europe/Paris") }}</div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="sidebar-widget sidebar-categories">
+                        <div class="widget-title">
+                            <h3>Liens utiles</h3>
+                        </div>
+                        <div class="widget-content">
+                            <ul class="categories-list clearfix">
+                                <li><a href="https://agce.exam-deco.org/iadmin/" target="_blank">AGCE</a></li>
+                                <li><a href="https://agcepe.exam-deco.org/admin/" target="_blank">AGCEPE</a></li>
+                                <li><a href="">ePEDAGO</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    {#<div class="sidebar-widget sidebar-categories">
+                        <div class="widget-title">
+                            <h3>Stats du Site</h3>
+                        </div>
+                        <div class="widget-content">
+                            <ul class="categories-list clearfix">
+                                <li><a href="">Personnes connectées <span>(XXXXX)</span></a></li>
+                                <li><a href="">Nombre de visites<span>(XXXXXXX)</span></a></li>
+                            </ul>
+                        </div>
+                    </div>#}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
